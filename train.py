@@ -120,14 +120,14 @@ transforms_ = [
 
 # Training data loader
 dataloader = DataLoader(
-    ImageDataset("/content/drive/MyDrive/CV/GAN/cGAN/img_download/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True),
+    ImageDataset("/content/drive/MyDrive/CV/GAN/CycleGAN/img_download/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True),
     batch_size=opt.batch_size,
     shuffle=True,
     num_workers=opt.n_cpu,
 )
 # Test data loader
 val_dataloader = DataLoader(
-    ImageDataset("/content/drive/MyDrive/CV/GAN/cGAN/img_download/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True, mode="test"),
+    ImageDataset("/content/drive/MyDrive/CV/GAN/CycleGAN/img_download/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True, mode="test"),
     batch_size=5,
     shuffle=True,
     num_workers=1,
@@ -284,5 +284,3 @@ for epoch in range(opt.epoch, opt.n_epochs):
         torch.save(G_BA.state_dict(), model_path+"/%s/G_BA_%d.pth" % (opt.dataset_name, epoch))
         torch.save(D_A.state_dict(), model_path+"/%s/D_A_%d.pth" % (opt.dataset_name, epoch))
         torch.save(D_B.state_dict(), model_path+"/%s/D_B_%d.pth" % (opt.dataset_name, epoch))
-
-print('EOF')
