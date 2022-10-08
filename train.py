@@ -122,14 +122,14 @@ transforms_ = [
 dataloader = DataLoader(
     ImageDataset("/content/drive/MyDrive/CV/GAN/CycleGAN/img_download/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True),
     batch_size=opt.batch_size,
-    shuffle=True,
+    shuffle=False,
     num_workers=opt.n_cpu,
 )
 # Test data loader
 val_dataloader = DataLoader(
     ImageDataset("/content/drive/MyDrive/CV/GAN/CycleGAN/img_download/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True, mode="test"),
     batch_size=5,
-    shuffle=True,
+    shuffle=False,
     num_workers=1,
 )
 
