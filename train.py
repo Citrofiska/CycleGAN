@@ -74,10 +74,10 @@ if cuda:
 
 if opt.epoch != 0:
     # Load pretrained models
-    G_AB.load_state_dict(torch.load("model_path/%s/G_AB_%d.pth" % (opt.dataset_name, opt.epoch)))
-    G_BA.load_state_dict(torch.load("model_path/%s/G_BA_%d.pth" % (opt.dataset_name, opt.epoch)))
-    D_A.load_state_dict(torch.load("model_path/%s/D_A_%d.pth" % (opt.dataset_name, opt.epoch)))
-    D_B.load_state_dict(torch.load("model_path/%s/D_B_%d.pth" % (opt.dataset_name, opt.epoch)))
+    G_AB.load_state_dict(torch.load(model_path+"/%s/G_AB_%d.pth" % (opt.dataset_name, opt.epoch)))
+    G_BA.load_state_dict(torch.load(model_path+"/%s/G_BA_%d.pth" % (opt.dataset_name, opt.epoch)))
+    D_A.load_state_dict(torch.load(model_path+"/%s/D_A_%d.pth" % (opt.dataset_name, opt.epoch)))
+    D_B.load_state_dict(torch.load(model_path+"/%s/D_B_%d.pth" % (opt.dataset_name, opt.epoch)))
 else:
     # Initialize weights
     G_AB.apply(weights_init_normal)
@@ -284,3 +284,5 @@ for epoch in range(opt.epoch, opt.n_epochs):
         torch.save(G_BA.state_dict(), model_path+"/%s/G_BA_%d.pth" % (opt.dataset_name, epoch))
         torch.save(D_A.state_dict(), model_path+"/%s/D_A_%d.pth" % (opt.dataset_name, epoch))
         torch.save(D_B.state_dict(), model_path+"/%s/D_B_%d.pth" % (opt.dataset_name, epoch))
+
+print('EOF')
